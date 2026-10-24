@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <!-- Без этой строки телефон покажет «уменьшенную копию» сайта для компьютера -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ===== SEO ===== -->
+  <title>Автомойка «Блеск» — демо-лендинг для портфолио</title>
+  <meta name="description" content="Демо-лендинг автомойки «Блеск» (проект для портфолио): экспресс-мойка, комплексная мойка, химчистка салона, полировка кузова и керамическое покрытие.">
+  <!-- Демо-проект: не показывать в поиске, чтобы вымышленную мойку не приняли за настоящую -->
+  <meta name="robots" content="noindex">
+
+  <!-- Open Graph: как будет выглядеть ссылка на сайт в Telegram, VK, WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Автомойка «Блеск» — демо-лендинг">
+  <meta property="og:description" content="Демо-проект для портфолио: лендинг автомойки на чистых HTML, CSS и JavaScript. Контакты вымышленные.">
+  <meta property="og:url" content="https://unccule.github.io/blesk-landing/">
+  <meta property="og:image" content="https://unccule.github.io/blesk-landing/images/og-image.jpg">
+  <!-- 1200×630 — стандартный размер превью для соцсетей и мессенджеров -->
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ru_RU">
+
+  <!-- Иконка во вкладке браузера -->
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#1E1E1E">
+
+  <!-- ===== Шрифты (Google Fonts, с поддержкой кириллицы) ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Одна строка БЕЗ defer — выполняется сразу, до того как страница нарисуется.
+       Класс js говорит CSS: «JavaScript работает, можно прятать блоки для анимации появления».
+       Если JS отключён или сломался, класса не будет — и весь контент просто виден -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- defer: скрипты скачиваются сразу, а выполняются после того, как HTML прочитан,
+       и строго по порядку — сначала config.js, потом остальные -->
+  <script src="js/config.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/gallery.js" defer></script>
+  <script src="js/form.js" defer></script>
+</head>
+<body>
+
+  <!-- ===================== ШАПКА ===================== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <!-- Логотип: искорка-«блеск» + название. Искорка — встроенный SVG, красится цветом из CSS -->
+      <a href="#home" class="logo" aria-label="Автомойка «Блеск» — на главную">
+        <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2Q13 11 22 12 13 13 12 22 11 13 2 12 11 11 12 2Z"/></svg>
+        БЛЕСК
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Главное меню">
+        <ul class="nav__list">
+          <li><a href="#home" class="nav__link">Главная</a></li>
+          <li><a href="#about" class="nav__link">О нас</a></li>
+          <li><a href="#services" class="nav__link">Услуги</a></li>
+          <li><a href="#gallery" class="nav__link">Галерея</a></li>
+          <li><a href="#contacts" class="nav__link">Контакты</a></li>
+        </ul>
+        <!-- Эта кнопка видна только в мобильном меню -->
+        <a href="#booking" class="btn btn--primary nav__cta">Записаться</a>
+      </nav>
+
+      <div class="header__actions">
+        <!-- data-link="telegram": main.js подставит сюда ссылку из config.js -->
+        <a href="#" class="icon-btn" data-telegram-only data-link="telegram" target="_blank" rel="noopener" aria-label="Написать в Telegram">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9-8.2c.4-.4-.1-.6-.6-.2L6.3 13 1.5 11.5c-1-.3-1-1 .2-1.5L20.6 2.9c.9-.3 1.6.2 1.3 1.4Z"/></svg>
+        </a>
+        <a href="#booking" class="btn btn--primary header__cta">Записаться</a>
+
+        <!-- Бургер: aria-expanded сообщает программам для незрячих, открыто ли меню -->
+        <button class="burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================== ГЛАВНАЯ ===================== -->
+    <!-- Фон главного экрана нарисован в CSS (градиенты), картинки не нужны -->
+    <section class="hero" id="home">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="eyebrow" data-reveal data-reveal-delay="0">Ставрополь · Автомойка</p>
+
+          <h1 class="hero__title" data-reveal data-reveal-delay="100">
+            Чистота
+            <!-- span стал блоком (display: block в CSS), поэтому сам начинается с новой строки -->
+            <span class="hero__title-accent">до блеска</span>
+          </h1>
+
+          <p class="hero__text" data-reveal data-reveal-delay="200">
+            Экспресс-мойка, комплексная мойка, химчистка салона, полировка
+            и керамическое покрытие — всё в одном месте.
+          </p>
+
+          <div class="hero__buttons" data-reveal data-reveal-delay="300">
+            <a href="#booking" class="btn btn--primary btn--lg">Записаться</a>
+            <a href="#" class="btn btn--ghost btn--lg" data-telegram-only data-link="telegram" target="_blank" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9-8.2c.4-.4-.1-.6-.6-.2L6.3 13 1.5 11.5c-1-.3-1-1 .2-1.5L20.6 2.9c.9-.3 1.6.2 1.3 1.4Z"/></svg>
+              Написать в Telegram
+            </a>
+          </div>
+
+          <!-- Только факты, которые дал владелец: часы работы, число услуг, онлайн-запись.
+               Стаж и «тысячи машин» не пишем, пока их не подтвердили.
+               Часы «8–22» здесь и на плашке у фото в «О нас» записаны коротко, вручную:
+               если они поменяются — поправь config.js, а потом и эти два места -->
+
+          <ul class="hero__stats" data-reveal data-reveal-delay="400">
+            <li class="hero__stat">
+              <span class="hero__stat-value">8–22</span>
+              <span class="hero__stat-label">ежедневно, без выходных</span>
+            </li>
+            <li class="hero__stat">
+              <span class="hero__stat-value">5 услуг</span>
+              <span class="hero__stat-label">от мойки до керамики</span>
+            </li>
+            <li class="hero__stat">
+              <span class="hero__stat-value">Онлайн</span>
+              <span class="hero__stat-label">запись на удобный день</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Карточка «Что нужно машине?» (видна на экранах от 992px).
+             Человек выбирает задачу — карточка показывает подходящую услугу,
+             а кнопка «Записаться» сразу выбирает её в форме.
+             Данные лежат в data-атрибутах кнопок, main.js читает их при клике:
+               data-pick    — название услуги (буква в букву как в форме!)
+               data-shine   — сколько «блеска» показать на образце (0…1)
+               data-beads   — капли воды на образце (1 — для керамики: вода скатывается шариками)
+               data-surface — paint (кузов) или fabric (ткань салона)
+               data-zone    — подпись в углу образца
+               data-text    — пояснение под названием -->
+        <!-- ВРЕМЕННО: пояснения — общие описания услуг, сверь с владельцем, что входит у вас -->
+        <div class="pick-card" data-reveal data-reveal-delay="350">
+          <p class="pick-card__label">Что нужно машине?</p>
+
+          <div class="pick-card__sample" id="pick-sample" style="--shine: 0.55; --beads: 0">
+            <span class="pick-card__fabric" aria-hidden="true"></span>
+            <span class="pick-card__shine" aria-hidden="true"></span>
+            <span class="pick-card__beads" aria-hidden="true"></span>
+            <span class="pick-card__zone" id="pick-zone">Кузов и салон</span>
+          </div>
+
+          <div class="pick-card__options" role="group" aria-label="Что нужно сделать с машиной">
+            <button class="pick-card__option" type="button" aria-pressed="false"
+                    data-pick="Экспресс-мойка" data-shine="0.3" data-beads="0" data-surface="paint" data-zone="Кузов"
+                    data-text="Быстро смыть пыль и грязь с кузова после дороги или дождя.">Освежить</button>
+            <button class="pick-card__option is-active" type="button" aria-pressed="true"
+                    data-pick="Комплексная мойка" data-shine="0.55" data-beads="0" data-surface="paint" data-zone="Кузов и салон"
+                    data-text="Кузов снаружи и салон внутри — за один визит.">Помыть всё</button>
+            <button class="pick-card__option" type="button" aria-pressed="false"
+                    data-pick="Химчистка салона" data-shine="0" data-beads="0" data-surface="fabric" data-zone="Салон"
+                    data-text="Глубокая чистка сидений, потолка, ковров и пластика: пятна, пыль, запахи.">Почистить салон</button>
+            <button class="pick-card__option" type="button" aria-pressed="false"
+                    data-pick="Полировка кузова" data-shine="0.95" data-beads="0" data-surface="paint" data-zone="Лак"
+                    data-text="Убирает мелкие царапины и потёртости, возвращает лаку глубину и блеск.">Вернуть блеск</button>
+            <button class="pick-card__option" type="button" aria-pressed="false"
+                    data-pick="Керамическое покрытие" data-shine="1" data-beads="1" data-surface="paint" data-zone="Защита лака"
+                    data-text="Твёрдый защитный слой на лаке: вода скатывается, грязь держится хуже.">Защитить кузов</button>
+          </div>
+
+          <!-- aria-live: экранный диктор прочитает новый текст, когда он поменяется -->
+          <div class="pick-card__result" aria-live="polite">
+            <p class="pick-card__service" id="pick-service">Комплексная мойка</p>
+            <p class="pick-card__desc" id="pick-desc">Кузов снаружи и салон внутри — за один визит.</p>
+          </div>
+
+          <!-- data-service меняет main.js; form.js по нему выбирает услугу в форме -->
+          <a href="#booking" class="btn btn--primary pick-card__cta" id="pick-cta" data-service="Комплексная мойка">Записаться на эту услугу</a>
+        </div>
+      </div>
+
+      <!-- Подсказка «листайте вниз». aria-hidden: для экранных дикторов это лишний шум -->
+      <a href="#about" class="hero__scroll" aria-hidden="true" tabindex="-1">
+        <span class="hero__scroll-line"></span>
+      </a>
+    </section>
+
+    <!-- ===================== О НАС ===================== -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="about__grid">
+          <div class="about__text" data-reveal>
+            <p class="eyebrow">О нас</p>
+            <h2 class="section__title">Моем, чистим и защищаем — в одном месте</h2>
+
+            <!-- ВРЕМЕННО: текст собран только из того, что известно (адрес, услуги, часы).
+                 Добавь реальные детали от владельца: сколько постов, какая химия,
+                 есть ли где подождать, сколько лет работаете — только то, что правда -->
+            <p class="about__lead">
+              «Блеск» — автомойка в Ставрополе. Моем кузов, чистим салон,
+              полируем и защищаем лак.
+            </p>
+            <p class="about__paragraph">
+              Можно быстро освежить машину после дороги, а можно вернуть ей вид как из салона:
+              химчистка, полировка и керамическое покрытие. Не знаете, что выбрать, — подскажем.
+            </p>
+
+            <!-- ВРЕМЕННО: сверь состав химчистки с владельцем -->
+            <ul class="checklist">
+              <li class="checklist__item">Кузов — экспресс-мойка и комплексная мойка</li>
+              <li class="checklist__item">Салон — химчистка сидений, потолка и ковров</li>
+              <li class="checklist__item">Лак — полировка и керамическое покрытие</li>
+            </ul>
+          </div>
+
+          <!-- figure — «иллюстрация с подписью»: правильный тег для фото, которое поясняет текст.
+               loading="lazy": фото загрузится, только когда человек до него долистает.
+               width и height нужны, чтобы браузер заранее оставил место и страница не «прыгала» -->
+          <!-- ВРЕМЕННО: images/about.jpg — заглушка. Замени фото мойки с тем же именем (лучше вертикальное 4:5) -->
+          <figure class="about__media" data-reveal>
+            <img src="images/about.jpg" alt="Заглушка: здесь будет фото автомойки «Блеск»"
+                 width="1000" height="1250" loading="lazy">
+            <figcaption class="about__badge">
+              <span class="about__badge-value">8–22</span>
+              <span class="about__badge-label">ежедневно,<br>без выходных</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Преимущества. Иконки — встроенный SVG: рисуется линиями (stroke),
+             цвет берётся из CSS (currentColor), при увеличении не размывается -->
+        <ul class="features">
+          <li class="feature" data-reveal>
+            <span class="feature__num">01</span>
+            <span class="feature__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
+            <h3 class="feature__title">Без выходных</h3>
+            <!-- Часы подставляются из config.js. В заголовке их нет: на компьютере в узкой
+                 карточке строка «Ежедневно 8:00–22:00» рвалась прямо после тире -->
+            <p class="feature__text"><span data-config="workHours">Ежедневно 8:00–22:00</span>: заезжайте до работы, в обед или вечером.</p>
+          </li>
+          <li class="feature" data-reveal>
+            <span class="feature__num">02</span>
+            <span class="feature__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="m9 15 2 2 4-4"/></svg>
+            </span>
+            <h3 class="feature__title">Запись на удобный день</h3>
+            <p class="feature__text">Оставьте заявку на сайте — перезвоним и подтвердим время.</p>
+          </li>
+          <li class="feature" data-reveal>
+            <span class="feature__num">03</span>
+            <span class="feature__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="m2 12 10 5 10-5"/><path d="m2 16 10 5 10-5"/></svg>
+            </span>
+            <h3 class="feature__title">От мойки до керамики</h3>
+            <p class="feature__text">Пять услуг в одном месте: не нужно искать отдельно химчистку или полировку.</p>
+          </li>
+          <li class="feature" data-reveal>
+            <span class="feature__num">04</span>
+            <span class="feature__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/><path d="M9 10h6M9 14h4"/></svg>
+            </span>
+            <h3 class="feature__title">Подскажем, что выбрать</h3>
+            <p class="feature__text">Позвоните<span data-telegram-only> или напишите в Telegram</span> — расскажем, какая услуга нужна вашей машине.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== УСЛУГИ И ЦЕНЫ ===================== -->
+    <section class="section section--alt" id="services">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow">Услуги и цены</p>
+          <h2 class="section__title">Что мы делаем</h2>
+          <!-- ВРЕМЕННО: сверь с владельцем, от чего зависит цена -->
+          <p class="section__subtitle">
+            Цена зависит от класса автомобиля и степени загрязнения.
+            Точную стоимость назовём при записи — до начала работы.
+          </p>
+        </div>
+
+        <!-- ВРЕМЕННО: цен нет — на их месте жёлтые [цена]. Впиши реальные «от …» от владельца.
+             Описания — общие, сверь, что входит в каждую услугу именно у вас.
+             data-service у ссылки — название услуги. Оно должно совпадать буква в букву
+             с вариантом в форме (<select> ниже) и со списком SERVICES в server/yandex-function/index.js -->
+        <ul class="services">
+          <li class="service" data-reveal>
+            <span class="service__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s6 6.4 6 11a6 6 0 0 1-12 0c0-4.6 6-11 6-11Z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/></svg>
+            </span>
+            <h3 class="service__title">Экспресс-мойка</h3>
+            <p class="service__text">Мойка кузова, когда нужно быстро освежить машину после дороги или дождя.</p>
+            <div class="service__footer">
+              <p class="service__price">от <span class="is-placeholder">[цена]</span> ₽</p>
+              <a href="#booking" class="service__link" data-service="Экспресс-мойка">Записаться <span aria-hidden="true">→</span></a>
+            </div>
+          </li>
+          <li class="service" data-reveal>
+            <span class="service__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17h14M6 17l1.5-5.5A2 2 0 0 1 9.4 10h5.2a2 2 0 0 1 1.9 1.5L18 17"/><path d="M5 17v3M19 17v3"/><path d="M8 3.5v2M12 2.5v3M16 3.5v2"/></svg>
+            </span>
+            <h3 class="service__title">Комплексная мойка</h3>
+            <p class="service__text">Кузов и салон за один визит: мойка снаружи, уборка и протирка внутри.</p>
+            <div class="service__footer">
+              <p class="service__price">от <span class="is-placeholder">[цена]</span> ₽</p>
+              <a href="#booking" class="service__link" data-service="Комплексная мойка">Записаться <span aria-hidden="true">→</span></a>
+            </div>
+          </li>
+          <li class="service" data-reveal>
+            <span class="service__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h5a2 2 0 0 1 2 2.2L14 13H8.5L7 5.2A2 2 0 0 1 8 3Z"/><path d="M6 13h11a1 1 0 0 1 1 1v3H5v-3a1 1 0 0 1 1-1Z"/><path d="M7 17v4M16 17v4"/></svg>
+            </span>
+            <h3 class="service__title">Химчистка салона</h3>
+            <p class="service__text">Глубокая чистка сидений, потолка, ковров и пластика — убирает пятна, пыль и запахи.</p>
+            <div class="service__footer">
+              <p class="service__price">от <span class="is-placeholder">[цена]</span> ₽</p>
+              <a href="#booking" class="service__link" data-service="Химчистка салона">Записаться <span aria-hidden="true">→</span></a>
+            </div>
+          </li>
+          <li class="service" data-reveal>
+            <span class="service__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2L12 3Z"/></svg>
+            </span>
+            <h3 class="service__title">Полировка кузова</h3>
+            <p class="service__text">Убирает мелкие царапины и потёртости, возвращает лаку глубину и блеск.</p>
+            <div class="service__footer">
+              <p class="service__price">от <span class="is-placeholder">[цена]</span> ₽</p>
+              <a href="#booking" class="service__link" data-service="Полировка кузова">Записаться <span aria-hidden="true">→</span></a>
+            </div>
+          </li>
+          <li class="service" data-reveal>
+            <span class="service__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <h3 class="service__title">Керамическое покрытие</h3>
+            <p class="service__text">Твёрдый защитный слой на лаке: вода скатывается, грязь держится хуже, машину проще мыть.</p>
+            <div class="service__footer">
+              <p class="service__price">от <span class="is-placeholder">[цена]</span> ₽</p>
+              <a href="#booking" class="service__link" data-service="Керамическое покрытие">Записаться <span aria-hidden="true">→</span></a>
+            </div>
+          </li>
+          <!-- Шестая карточка закрывает сетку 3×2 и даёт выход тем, кто не знает, что выбрать -->
+          <li class="service service--cta" data-reveal>
+            <h3 class="service__title">Не знаете, что выбрать?</h3>
+            <p class="service__text">Напишите в Telegram — подскажем, какая услуга нужна вашей машине, и ответим на вопросы.</p>
+            <a href="#" class="btn btn--primary service__cta-btn" data-link="telegram" target="_blank" rel="noopener">Написать в Telegram</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== КАК ПРОХОДИТ ЗАПИСЬ ===================== -->
+    <!-- ol — нумерованный список: шаги идут по порядку, и это важно по смыслу -->
+    <section class="section section--dark" id="process">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow">Как это работает</p>
+          <h2 class="section__title">Четыре шага до чистой машины</h2>
+        </div>
+
+        <!-- ВРЕМЕННО: шаг 02 — сверь с владельцем, как подтверждают запись (звонок или сообщение) -->
+        <ol class="steps">
+          <li class="step" data-reveal>
+            <span class="step__num">01</span>
+            <h3 class="step__title">Заявка</h3>
+            <p class="step__text">Оставьте заявку на сайте<span data-telegram-only> или напишите в Telegram</span>: выберите услугу и удобный день.</p>
+          </li>
+          <li class="step" data-reveal>
+            <span class="step__num">02</span>
+            <h3 class="step__title">Подтверждение</h3>
+            <p class="step__text">Перезвоним, уточним класс машины и подтвердим время.</p>
+          </li>
+          <li class="step" data-reveal>
+            <span class="step__num">03</span>
+            <h3 class="step__title">Приезжаете</h3>
+            <!-- data-config="address": адрес подставится из config.js -->
+            <p class="step__text">Ждём вас по адресу <span data-config="address">г. Ставрополь, ул. Примерная, 1</span> в назначенное время.</p>
+          </li>
+          <li class="step" data-reveal>
+            <span class="step__num">04</span>
+            <h3 class="step__title">Готово</h3>
+            <p class="step__text">Забираете чистую машину. Подскажем, как сохранить результат подольше.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== ГАЛЕРЕЯ ===================== -->
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow">Портфолио</p>
+          <h2 class="section__title">Наши работы</h2>
+          <p class="section__subtitle">Нажмите на фото, чтобы посмотреть крупнее.</p>
+        </div>
+
+        <!-- Пустой список: gallery.js заполнит его фотографиями из config.js -->
+        <ul class="gallery" id="gallery-grid"></ul>
+
+        <div class="gallery__cta" data-reveal>
+          <p class="gallery__cta-text">Хотите так же?</p>
+          <a href="#booking" class="btn btn--primary">Записаться</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Лайтбокс — окно для просмотра фото на весь экран.
+         <dialog> — встроенный в браузер элемент для модальных окон:
+         сам закрывается по Esc, не пускает фокус клавиатуры «за» окно
+         и возвращает его обратно, когда окно закрыто -->
+    <dialog class="lightbox" id="lightbox" aria-label="Просмотр фото">
+      <div class="lightbox__top">
+        <!-- aria-live: диктор прочитает «3 / 8», когда фото сменится -->
+        <p class="lightbox__counter" id="lightbox-counter" aria-live="polite">1 / 8</p>
+        <button class="lightbox__btn lightbox__close" id="lightbox-close" type="button" aria-label="Закрыть">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+
+      <div class="lightbox__stage" id="lightbox-stage">
+        <button class="lightbox__btn lightbox__nav lightbox__nav--prev" id="lightbox-prev" type="button" aria-label="Предыдущее фото">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
+        </button>
+        <img class="lightbox__img" id="lightbox-img" src="" alt="">
+        <button class="lightbox__btn lightbox__nav lightbox__nav--next" id="lightbox-next" type="button" aria-label="Следующее фото">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <p class="lightbox__caption" id="lightbox-caption"></p>
+    </dialog>
+
+    <!-- ===================== ЧАСТЫЕ ВОПРОСЫ ===================== -->
+    <section class="section section--alt" id="faq">
+      <div class="container faq__grid">
+        <div class="faq__intro" data-reveal>
+          <p class="eyebrow">Частые вопросы</p>
+          <h2 class="section__title">Что важно знать до записи</h2>
+          <p class="section__subtitle">Не нашли ответ? Напишите — подскажем, какая услуга нужна вашей машине.</p>
+          <a href="#" class="btn btn--dark" data-link="telegram" target="_blank" rel="noopener">Задать вопрос в Telegram</a>
+        </div>
+
+        <!-- details/summary — готовая «гармошка» из HTML, работает без JavaScript.
+             Одинаковый name у всех details: при открытии одного вопроса остальные закрываются -->
+        <!-- ВРЕМЕННО: ответы — общие, без цифр. Сверь с владельцем: можно ли без записи,
+             сколько по времени химчистка и полировка, как оплатить -->
+        <div class="faq__list">
+          <details class="faq__item" name="faq" data-reveal open>
+            <summary class="faq__question">Нужно ли записываться заранее?</summary>
+            <div class="faq__answer">
+              <p>Лучше записаться: так вы приедете к своему времени. Оставьте заявку на сайте<span data-telegram-only> или напишите в Telegram</span> — перезвоним и подтвердим.</p>
+            </div>
+          </details>
+          <details class="faq__item" name="faq" data-reveal>
+            <summary class="faq__question">Сколько стоит мойка?</summary>
+            <div class="faq__answer">
+              <p>Цена зависит от услуги, класса автомобиля и степени загрязнения. Точную стоимость назовём при записи, до начала работы.</p>
+            </div>
+          </details>
+          <details class="faq__item" name="faq" data-reveal>
+            <summary class="faq__question">Чем экспресс-мойка отличается от комплексной?</summary>
+            <div class="faq__answer">
+              <p>Экспресс-мойка — это мойка кузова, когда нужно быстро освежить машину. Комплексная — кузов и салон за один визит: снаружи моем, внутри убираем.</p>
+            </div>
+          </details>
+          <details class="faq__item" name="faq" data-reveal>
+            <summary class="faq__question">Сколько времени занимает химчистка салона?</summary>
+            <div class="faq__answer">
+              <p>Зависит от размера салона и того, насколько он загрязнён. Примерное время назовём при записи, чтобы вы могли спланировать день.</p>
+            </div>
+          </details>
+          <details class="faq__item" name="faq" data-reveal>
+            <summary class="faq__question">Зачем полировка и керамика, если машину можно просто помыть?</summary>
+            <div class="faq__answer">
+              <p>Мойка убирает грязь, но не царапины. Полировка снимает мелкие царапины и потёртости и возвращает лаку блеск. Керамическое покрытие защищает лак: вода скатывается, грязь держится хуже, и машину проще мыть.</p>
+            </div>
+          </details>
+          <details class="faq__item" name="faq" data-reveal>
+            <summary class="faq__question">Как с вами связаться?</summary>
+            <div class="faq__answer">
+              <p>Позвоните по номеру <a href="#contacts" data-link="phone" data-config="phoneDisplay">+7 (000) 000-00-00</a><span data-telegram-only>, напишите в Telegram <a href="#" data-link="telegram" data-config="telegramName" target="_blank" rel="noopener"></a></span> или оставьте заявку на сайте. Часы работы: <span data-config="workHours">Ежедневно 8:00–22:00</span>.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== КОНТАКТЫ И ЗАПИСЬ ===================== -->
+    <section class="section" id="contacts">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="eyebrow">Контакты</p>
+          <h2 class="section__title">Запишитесь на мойку</h2>
+          <p class="section__subtitle">Оставьте заявку — перезвоним и подтвердим время.<span data-telegram-only> Или напишите в Telegram, если так удобнее.</span></p>
+        </div>
+
+        <div class="contacts__grid">
+          <!-- ----- Контакты (данные подставляет main.js из config.js) ----- -->
+          <div class="contacts__info" data-reveal>
+            <div class="contact-card">
+              <ul class="contact-card__list">
+                <li class="contact-card__item">
+                  <span class="contact-card__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+                  </span>
+                  <div>
+                    <p class="contact-card__label">Телефон</p>
+                    <a href="#contacts" class="contact-card__value" data-link="phone" data-config="phoneDisplay">+7 (000) 000-00-00</a>
+                  </div>
+                </li>
+                <li class="contact-card__item" data-telegram-only>
+                  <span class="contact-card__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 4-18 7 6.5 2.5M21 4l-3 16-8.5-6.5M21 4 9.5 13.5V19l3-3.5"/></svg>
+                  </span>
+                  <div>
+                    <p class="contact-card__label">Telegram</p>
+                    <a href="#contacts" class="contact-card__value" data-link="telegram" data-config="telegramName" target="_blank" rel="noopener">@blesk_demo</a>
+                  </div>
+                </li>
+                <li class="contact-card__item">
+                  <span class="contact-card__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                  </span>
+                  <div>
+                    <p class="contact-card__label">Адрес</p>
+                    <p class="contact-card__value" data-config="address">г. Ставрополь, ул. Примерная, 1</p>
+                  </div>
+                </li>
+                <li class="contact-card__item">
+                  <span class="contact-card__icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                  </span>
+                  <div>
+                    <p class="contact-card__label">Часы работы</p>
+                    <p class="contact-card__value" data-config="workHours">Ежедневно 8:00–22:00</p>
+                  </div>
+                </li>
+              </ul>
+
+              <div class="contact-card__buttons">
+                <a href="#contacts" class="btn btn--primary" data-link="phone">Позвонить</a>
+                <a href="#" class="btn btn--ghost" data-telegram-only data-link="telegram" target="_blank" rel="noopener">Написать в Telegram</a>
+              </div>
+            </div>
+
+            <!-- ВРЕМЕННО: заглушка карты. Настоящую карту можно встроить из конструктора
+                 Яндекс Карт (yandex.ru/map-constructor): он выдаст код <iframe>,
+                 его нужно вставить сюда вместо содержимого блока .map -->
+            <div class="map">
+              <span class="map__pin" aria-hidden="true"></span>
+              <p class="map__address" data-config="address">г. Ставрополь, ул. Примерная, 1</p>
+              <a href="#" class="map__link" data-link="map" target="_blank" rel="noopener">Открыть в Яндекс Картах <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+
+          <!-- ----- Форма записи -----
+               novalidate отключает стандартные всплывающие подсказки браузера:
+               ошибки покажет form.js — понятным текстом прямо под полем.
+               required и другие атрибуты всё равно нужны: по ним form.js и проверяет поля.
+               Поля — ровно те, что нужны для записи: имя, телефон, услуга, дата.
+               Меньше полей — меньше персональных данных и больше заполненных заявок -->
+          <form class="booking" id="booking" novalidate data-reveal>
+            <h3 class="booking__title">Заявка на запись</h3>
+
+            <div class="booking__grid">
+              <div class="field">
+                <label class="field__label" for="f-name">Ваше имя <span class="field__req" aria-hidden="true">*</span></label>
+                <input class="field__input" id="f-name" name="name" type="text" required minlength="2" maxlength="50"
+                       autocomplete="name" placeholder="Например, Алексей">
+                <p class="field__error" id="f-name-error"></p>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="f-phone">Телефон <span class="field__req" aria-hidden="true">*</span></label>
+                <!-- type="tel" + inputmode: на телефоне откроется цифровая клавиатура -->
+                <input class="field__input" id="f-phone" name="phone" type="tel" required inputmode="tel"
+                       autocomplete="tel" placeholder="+7 (___) ___-__-__">
+                <p class="field__error" id="f-phone-error"></p>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="f-service">Услуга <span class="field__req" aria-hidden="true">*</span></label>
+                <!-- Варианты должны совпадать буква в букву с data-service у карточек услуг
+                     и со списком SERVICES в server/yandex-function/index.js -->
+                <select class="field__input field__select" id="f-service" name="service" required>
+                  <option value="" disabled selected>Выберите услугу</option>
+                  <option>Экспресс-мойка</option>
+                  <option>Комплексная мойка</option>
+                  <option>Химчистка салона</option>
+                  <option>Полировка кузова</option>
+                  <option>Керамическое покрытие</option>
+                  <option>Другое</option>
+                </select>
+                <p class="field__error" id="f-service-error"></p>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="f-date">Удобная дата</label>
+                <input class="field__input" id="f-date" name="date" type="date">
+                <p class="field__error" id="f-date-error"></p>
+              </div>
+
+              <!-- Ловушка для спам-ботов: человек это поле не видит и не заполняет,
+                   а бот заполняет все поля подряд. Если оно не пустое — заявку не принимаем -->
+              <div class="booking__trap" aria-hidden="true">
+                <label for="f-website">Не заполняйте это поле</label>
+                <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+              </div>
+
+              <div class="field field--wide">
+                <label class="checkbox">
+                  <input class="checkbox__input" id="f-consent" name="consent" type="checkbox" required>
+                  <!-- target="_blank": документ откроется в новой вкладке, и заполненная форма не потеряется -->
+                  <span>
+                    Согласен на <a href="consent.html" target="_blank">обработку персональных данных</a>
+                    в соответствии с <a href="privacy.html" target="_blank">политикой</a>
+                    <span class="field__req" aria-hidden="true">*</span>
+                  </span>
+                </label>
+                <p class="field__error" id="f-consent-error"></p>
+              </div>
+            </div>
+
+            <button class="btn btn--primary btn--lg booking__submit" type="submit">Отправить заявку</button>
+
+            <!-- Сюда form.js выводит «Заявка отправлена» или сообщение об ошибке -->
+            <div class="booking__status" id="booking-status" role="status" aria-live="polite" hidden></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== ПОДВАЛ ===================== -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="#home" class="logo" aria-label="Автомойка «Блеск» — наверх">
+          <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2Q13 11 22 12 13 13 12 22 11 13 2 12 11 11 12 2Z"/></svg>
+          БЛЕСК
+        </a>
+        <p class="footer__text">Автомойка в Ставрополе: мойка, химчистка салона, полировка и керамическое покрытие.</p>
+      </div>
+
+      <div>
+        <h3 class="footer__title">Меню</h3>
+        <ul class="footer__list">
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#services">Услуги и цены</a></li>
+          <li><a href="#gallery">Галерея</a></li>
+          <li><a href="#faq">Вопросы</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="footer__title">Контакты</h3>
+        <!-- Текст внутри — запасной вариант. main.js заменит его данными из config.js -->
+        <ul class="footer__list">
+          <li><a href="#contacts" data-link="phone" data-config="phoneDisplay">+7 (000) 000-00-00</a></li>
+          <li data-telegram-only><a href="#contacts" data-link="telegram" data-config="telegramName" target="_blank" rel="noopener">@blesk_demo</a></li>
+          <li data-config="address">г. Ставрополь, ул. Примерная, 1</li>
+          <li data-config="workHours">Ежедневно 8:00–22:00</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>© <span id="year">2026</span> Автомойка «Блеск». Все права защищены.</p>
+      <ul class="footer__legal">
+        <li><a href="privacy.html">Политика обработки персональных данных</a></li>
+        <li><a href="consent.html">Согласие на обработку данных</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Плашка демо-проекта: автомойки нет, контакты вымышленные (для портфолио) -->
+  <div class="demo-badge" role="note">
+    Демо-проект для портфолио: контакты вымышленные ·
+    <a href="https://github.com/unccule/blesk-landing" target="_blank" rel="noopener">код на GitHub</a>
+  </div>
+
+</body>
+</html>
